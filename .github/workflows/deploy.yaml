@@ -17,7 +17,9 @@ jobs:
       run: echo "Hola Mundo"
 
   second_jobs:
-    # se indica que second jobs s¿necesita que se haya completado needs, por lo que hace que se ejecuten secuencialmente, no paralelamente
+    #Condicionales
+    if: false
+    # se indica que second jobs se necesita que se haya completado needs, por lo que hace que se ejecuten secuencialmente, no paralelamente
     needs: first_job
     #Definir MC, cada job necesita su propia definicion
     runs-on: ubuntu-latest
@@ -26,7 +28,7 @@ jobs:
     - name: Hola Mundo
       run: echo "Hola Mundo Segundo"
 
-  #First y Second job se ejecutanparalelamente, al mismo tiempo
+  #First y Second job se ejecutanparalelamente, al mismo tiempo, cuando no se tiene el needs en el segundo 
     
 
 

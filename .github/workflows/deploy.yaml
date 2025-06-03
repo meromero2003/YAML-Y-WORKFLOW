@@ -6,7 +6,7 @@ on: push
 
 jobs:
   #Definir un identificador
-  first_jobs:
+  first_job:
     #Definir sistema operativo o Maquina virtual asociada
     runs-on: ubuntu-latest
 
@@ -15,6 +15,14 @@ jobs:
     #Puede ejecutar comando o acciones
     - name: Hola Mundo
       run: echo "Hola Mundo"
+
+  seconf_jobs:
+    #Definir MC, cada job necesita su propia definicion
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Hola Mundo
+      run: echo "Hola Mundo Segundo"
 
 
     

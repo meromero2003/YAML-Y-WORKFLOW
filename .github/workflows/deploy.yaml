@@ -1,0 +1,20 @@
+# Directiva
+name: Deploy to server
+
+#Definir evento o lista de eventos con la directiva on:
+on: push
+
+jobs:
+  #Definir un identificador
+  first_jobs:
+    #Definir sistema operativo o Maquina virtual asociada
+    runs-on: ubuntu-latest
+
+    steps:
+    #Empiezan con un -
+    #Puede ejecutar comando o acciones
+    - name: Hola Mundo
+      run: echo "Hola Mundo"
+
+
+    

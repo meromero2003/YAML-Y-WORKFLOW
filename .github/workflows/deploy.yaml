@@ -46,11 +46,11 @@ jobs:
 
     env:
       #utiliza action para obtener informacion de lo definido en los needs del job, que es first job, luego se llama a output del fist job, y ahi se almacena la salida
-      salida: ${{ needs.first_job.outputs.salida }} 
+      SALIDA: ${{ needs.first_job.outputs.salida }} 
 
     steps:
     - name: Hola Mundo
-      run: echo "Hola Mundo Segundo"
+      run: echo "#SALIDA"
 
       #usar ACTION (chekout, situarte donde esta la accion)
     - name: Action

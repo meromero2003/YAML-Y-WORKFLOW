@@ -1,0 +1,19 @@
+#Permite ejecutar un mismo job de diferentes formas
+name: Deploy to server 
+
+on: push
+
+jobs:
+  first_job:
+
+    runs-on: ubuntu-latest
+
+    strategy:
+      #permite crear una matriz con la que poder ejecutar un mismo job con las diferetens configuraciones que se definan
+      matrix:
+        message: ["Hola", "CodigoFacilito", "Bootcamp"]
+
+    #ejecutara el cod 3 veces, mostrando los diferentes mesnajes
+    steps:
+      - name: Print mensaje
+        run: echo ${{ matrix.message }}

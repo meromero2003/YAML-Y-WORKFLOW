@@ -22,18 +22,15 @@ jobs:
     - name: Working dir
       id: step_1
       #Variable de entorno que contiene un archivo que permite insertar o concatenar valores que se pueden leer dentro de otros steps o valores
-      run: echo "my_variable = Hola Mundo" >>$GITHUB_OUTPUT #Guarda variable my_variable que tiene su valor dentro del output
+      run: echo "my_variable=Hola Mundo" >> $GITHUB_OUTPUT #Guarda variable my_variable que tiene su valor dentro del output
 
       #para usar variable que esta en el output
-    - name: obtener mensaje
+    - name: Obtener mensaje
       #al llamar a un step, hay que definirle un ID al step para poder llamarlo
-      run: echo "#{{ steps.step_1.outputs.my_variable }}" #de esta fomra se llama a la variable definida en un step anterior guardada en output
+      run: echo "${{ steps.step_1.outputs.my_variable }}" #de esta fomra se llama a la variable definida en un step anterior guardada en output
 
       #Esta forma de compartir funciona solo en comunicacion a nivel STEP
     
-
-    - name: Working dir after action
-      run: ls -al
   second_jobs:
     #Condicionales
     #Utilizar contexto para condicionar

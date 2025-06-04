@@ -11,6 +11,10 @@ jobs:
     #Definir sistema operativo o Maquina virtual asociada
     runs-on: ubuntu-latest
 
+    #forma para comunicar info entre jobs, se hace referencia a lo que este aca desde el otro job
+    outputs:
+      salida: ${{ steps.step_1.outputs.my_variable }}
+
     #variables de entorno
     env:
       #nombre variable : valor
@@ -29,7 +33,7 @@ jobs:
       #al llamar a un step, hay que definirle un ID al step para poder llamarlo
       run: echo "${{ steps.step_1.outputs.my_variable }}" #de esta fomra se llama a la variable definida en un step anterior guardada en output
 
-      #Esta forma de compartir funciona solo en comunicacion a nivel STEP
+      #Esta forma de compartir funciona solo en comunicacion a nivel JOB, no se puede comuncar con otro job
     
   second_jobs:
     #Condicionales
@@ -39,6 +43,10 @@ jobs:
     needs: first_job
     #Definir MC, cada job necesita su propia definicion
     runs-on: ubuntu-latest
+
+    env:
+      #utiliza action para obtener informacion de lo definido en los needs del job, que es first job, luego se llama a output del fist job, y ahi se almacena la salida
+      salida: ${{ needs.first_job.outputs.salida }} 
 
     steps:
     - name: Hola Mundo

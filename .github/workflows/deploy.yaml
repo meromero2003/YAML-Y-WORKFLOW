@@ -18,7 +18,8 @@ jobs:
 
   second_jobs:
     #Condicionales
-    if: false
+    #Utilizar contexto para condicionar
+    if: ${{ github.ref == 'refs/heads/main' }}
     # se indica que second jobs se necesita que se haya completado needs, por lo que hace que se ejecuten secuencialmente, no paralelamente
     needs: first_job
     #Definir MC, cada job necesita su propia definicion

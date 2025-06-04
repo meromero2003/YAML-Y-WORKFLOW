@@ -28,7 +28,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: first_job
 
-    #Descargar artefacto par apoder leerlo desde otro job
+    #Descargar artefacto para poder leerlo desde otro job
     steps:
       - name: Descargar artefacto
         uses: actions/download-artifact@v4

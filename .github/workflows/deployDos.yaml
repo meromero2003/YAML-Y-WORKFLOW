@@ -1,0 +1,24 @@
+name: Deploy to server 2
+
+on: push
+
+jobs:
+  first_job:
+
+    runs-on: ubuntu-latest
+
+    outputs:
+      salida: ${{ steps.step_1.outputs.my_variable }}
+
+    steps:
+    #Crear un artifact
+    - name: Generar archivo
+      run: |
+        echo "Archivo prueba, hola" >> test.log
+
+    ##genera un archivo comprimido
+    - name: Subir artefacto
+      uses: actions/upload-artifact@v4
+      with:
+        name: archivo-test
+        path: test.log

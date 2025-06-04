@@ -5,7 +5,7 @@ name: Deploy to server
 on: push
 
 jobs:
-  #Definir un identificador
+  #Definir un identificador para el job, funciona como id
   first_job:
     #Decalrar con name: "", un nombre para mostrar en git
     #Definir sistema operativo o Maquina virtual asociada
@@ -20,9 +20,16 @@ jobs:
     #Empiezan con un -
     #Puede ejecutar comando o acciones
     - name: Working dir
+      id: step_1
       #Variable de entorno que contiene un archivo que permite insertar o concatenar valores que se pueden leer dentro de otros steps o valores
-      run: ls $GITHUB_OUTPUT
+      run: echo "my_variable = Hola Mundo" >>$GITHUB_OUTPUT #Guarda variable my_variable que tiene su valor dentro del output
 
+      #para usar variable que esta en el output
+    - name: obtener mensaje
+      #al llamar a un step, hay que definirle un ID al step para poder llamarlo
+      run: echo "#{{ steps.step_1.outputs.my_variable }}" #de esta fomra se llama a la variable definida en un step anterior guardada en output
+
+      #Esta forma de compartir funciona solo en comunicacion a nivel STEP
     
 
     - name: Working dir after action

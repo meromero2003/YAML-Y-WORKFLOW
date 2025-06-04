@@ -20,12 +20,10 @@ jobs:
     #Empiezan con un -
     #Puede ejecutar comando o acciones
     - name: Working dir
-      run: ls -al
+      #Variable de entorno que contiene un archivo que permite insertar o concatenar valores que se pueden leer dentro de otros steps o valores
+      run: ls $GITHUB_OUTPUT
 
-    #usar accion (chekout, situarte donde esta la accion)
-    - name: Action
-      #nombre de la accion: 1. nombre del repo de quien crea la accion, 2. nombre de la accion, 3. @version
-      uses: actions/checkout@v4
+    
 
     - name: Working dir after action
       run: ls -al
@@ -41,6 +39,13 @@ jobs:
     steps:
     - name: Hola Mundo
       run: echo "Hola Mundo Segundo"
+
+      #usar ACTION (chekout, situarte donde esta la accion)
+    - name: Action
+      #nombre de la accion: 1. nombre del repo de quien crea la accion, 2. nombre de la accion, 3. @version
+      uses: actions/checkout@v4
+      #Para usar parametros
+      #with:
     
    
 
